@@ -1,8 +1,5 @@
 const socket=io("/")
-const mypeer=new Peer(undefined,{
-    host:'/' ,
-    port:'3001'
-})
+const mypeer=new Peer(undefined,{host: '/', port: 3000, path: '/peerjs'})
 
 const Ids={}
 const peers={}

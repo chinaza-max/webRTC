@@ -5,8 +5,18 @@ const app = express();
 import { Server } from "socket.io";
 const server = http.createServer(app);
 const io = new Server(server);
-let dataBaseId=0
+import { ExpressPeerServer } from 'peer';
 
+
+
+
+const peerServer = ExpressPeerServer(server, {
+  debug: true,
+  port: '3000',
+});
+
+
+app.use('/peerjs', peerServer);
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
@@ -39,6 +49,11 @@ io.on('connection', (socket) => {
 
   });
 });
+
+
+
+
+
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
