@@ -21,6 +21,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 
+
 app.get('/', (req, res) => {
   res.redirect(`/${Math.random().toString(36).substring(2, 15)}`);
 });
