@@ -77,6 +77,8 @@ class myclass{
     connectToNewUser(userId,stream){
 
         const call =mypeer.call(userId,stream)
+      console.log("call has been placed")
+      console.log(userId)
 
         let videoElement=this.getNewVideoElement(userId)
         call.on("stream",stream=>{
@@ -130,8 +132,13 @@ function startVideoStream(state1, state2) {
     }
     Ids[userId]=true
 
+
+
     mypeer.on('call', call => {
       call.answer(stream);
+
+      console.log("call has been answer")
+      console.log(userId)
       
       call.on('stream', Stream => {
 
