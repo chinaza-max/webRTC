@@ -1,10 +1,9 @@
 
+const domain= ''//'https://webrtc-ymot.onrender.com'
 
-
-
-
-const socket=io("https://webrtc-ymot.onrender.com")
-const mypeer=new Peer(undefined,{host: 'https://webrtc-ymot.onrender.com', port: 3000, path: 'https://webrtc-ymot.onrender.com/peerjs'})
+console.log(location.hostname)
+const socket=io('https://webrtc-ymot.onrender.com/')
+const mypeer=new Peer(undefined,{host:location.hostname, port: location.port || (location.protocol === 'https:' ? 443 : 80), path:'/peerjs'})
 
 const Ids={}
 const peers={}
