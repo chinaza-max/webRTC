@@ -60,9 +60,6 @@ io.on('connection', (socket) => {
 
     //socket.to(roomId).emit('user-connected', userId);
 
-    socket.join(roomId);
-
-
     socket.on('ready',()=>{
       console.log('ready as hell')
       console.log('ready as hell')
