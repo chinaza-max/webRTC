@@ -75,7 +75,25 @@ io.on('connection', (socket) => {
     console.log('ready as hell')
     console.log('ready as hell')
     console.log('ready as hell')
-    socket.broadcast.to(roomId).emit('user-connected',userId );
+    console.log(roomId)
+    console.log('ready as hell')
+
+    const room = io.sockets.adapter.rooms.get(roomId);
+    if (room) {
+
+      console.log('size size ')
+      console.log('size size ')
+
+        console.log(room.size)
+        console.log('size size ')
+        console.log('size size ')
+
+
+    } else {
+        return 0; // Room doesn't exist or no clients in the room
+    }
+
+    socket.broadcast.to(roomId).emit('user-connected',userId);
   })
 
 });
