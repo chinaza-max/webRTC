@@ -78,7 +78,7 @@ io.on('connection', (socket) => {
 
 
 
-/*
+
 mainServer.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
@@ -86,4 +86,4 @@ mainServer.listen(PORT, () => {
 
 peerServer.listen(peerPort, () => {
   console.log(`Peer server is running on port ${peerPort}`);
-});*/
+});
