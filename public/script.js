@@ -191,7 +191,6 @@ function startVideoStream(state1, state2) {
   
     console.log("call ready listner")
   
-    socket.emit("ready", roomID,userId)
   
     socket.on('user-connected', (userId) => {
       console.log(" user connected ")
@@ -202,7 +201,8 @@ function startVideoStream(state1, state2) {
         // }, 100);
          
     });
-  
+    socket.emit("ready", roomID,userId)
+
   })
   .catch(error => {
     console.error('Error accessing media devices:', error);
