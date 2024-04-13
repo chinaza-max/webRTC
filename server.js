@@ -57,12 +57,14 @@ io.of("/letgo").on('connection', (socket) => {
 
     console.log('connection made to room : ',roomId,userId)
     console.log('connection made to room : ',roomId,userId)
-   
     socket.join(roomId);
-
     //socket.to(roomId).emit('user-connected', userId);
-
     socket.on('ready2',()=>{
+      
+      console.log('ready as hell')
+      console.log('ready as hell')
+      console.log('ready as hell')
+      console.log('ready as hell')
       console.log('ready as hell')
       console.log('ready as hell')
       console.log('ready as hell')
@@ -70,10 +72,9 @@ io.of("/letgo").on('connection', (socket) => {
 
       //socket.broadcast.to(roomId).emit('user-connected',userId );
 
-      io.of("/letgo").in(roomId)
-                    .emit('user-connected',userId)
+      io.of("/letgo").in(roomId).emit('user-connected',userId)
 
-                    
+
     })
 
     socket.on('disconnect', () => {
@@ -81,6 +82,18 @@ io.of("/letgo").on('connection', (socket) => {
     });
 
   });
+
+  socket.on('ready',()=>{
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+
+  })
 });
 
 
