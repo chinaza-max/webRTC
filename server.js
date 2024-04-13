@@ -53,6 +53,13 @@ io.on('connection', (socket) => {
   socket.on('join-room', (roomId, userId) => {
 
     console.log('connection made to room : ',roomId)
+    console.log('connection made to room : ',roomId)
+    console.log('connection made to room : ',roomId)
+    console.log('connection made to room : ',roomId)
+    console.log('connection made to room : ',roomId)
+    console.log('connection made to room : ',roomId)
+    console.log('connection made to room : ',roomId)
+
     socket.join(roomId);
 
     //socket.to(roomId).emit('user-connected', userId);
