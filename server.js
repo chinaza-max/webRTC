@@ -83,8 +83,9 @@ io.on('connection', (socket) => {
 
       console.log('size size ')
       console.log('size size ')
-
-        console.log(room.size)
+      const numClients = socket.rooms[roomId].size;
+      console.log('size 1 ', numClients)
+      console.log('size 2 ', room.size)
         console.log('size size ')
         console.log('size size ')
 
