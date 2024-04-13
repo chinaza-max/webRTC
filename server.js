@@ -3,30 +3,39 @@ import express from 'express';
 import http from 'http';
 const app = express();
 import { Server } from "socket.io";
-const server = http.createServer(app);
-const io = new Server(server, {
+import { ExpressPeerServer } from 'peer';
+import cors from 'cors';
+
+
+
+app.use(cors());
+const mainServer = http.createServer(app);
+
+const io = new Server(mainServer, {
   cors: {
     origin: '*',
     methods: ['GET', 'POST']
   }
 });
-import { ExpressPeerServer } from 'peer';
 
-/*, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST']
-  }
-}*/
+
+const peerApp = express();
+const peerServer = http.createServer(peerApp);
+const peerPort = 9000;
+
+peerApp.use(cors());
+
 const PORT = process.env.PORT || 3000;
 
-const peerServer = ExpressPeerServer(server, {
+const peerServerOptions = {
   debug: true,
-  port: PORT,
-});
+  allow_discovery: true 
+};
+
+const peerServerInstance = ExpressPeerServer(peerServer, peerServerOptions);
 
 
-app.use('/peerjs', peerServer);
+peerApp.use('/peerjs', peerServerInstance);
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
@@ -63,6 +72,11 @@ io.on('connection', (socket) => {
 
 
 
-server.listen(PORT, () => {
+mainServer.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+
+
+peerServer.listen(peerPort, () => {
+  console.log(`Peer server is running on port ${peerPort}`);
 });
