@@ -115,6 +115,8 @@ const myclassInstance=new myclass()
 
 
 mypeer.on('open',id =>{
+
+  console.log("1111111111111111111111111111")
     userId=id
     socket.emit('join-room', roomID,id)
    // $('#myid').text(userId)
@@ -137,10 +139,8 @@ function startVideoStream(state1, state2) {
     Ids[userId]=true
 
 
-    console.log("my peer ")
-    console.log(mypeer)
-    console.log("my peer")
 
+    console.log("2222222222222222222222222222")
 
     mypeer.on('call', call => {
       call.answer(stream);
@@ -201,6 +201,8 @@ function startVideoStream(state1, state2) {
         // }, 100);
          
     });
+
+    console.log(userId)
     socket.emit("ready", roomID,userId)
 
   })
