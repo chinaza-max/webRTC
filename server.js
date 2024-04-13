@@ -52,30 +52,17 @@ app.get('/:myroom', (req, res) => {
     res.render('room', {roomId:req.params.myroom});
 });
 
-io.of("/letgo").on('connection', (socket) => {
+io.on('connection', (socket) => {
   socket.on('join-room', (roomId, userId) => {
 
     console.log('connection made to room : ',roomId,userId)
     console.log('connection made to room : ',roomId,userId)
+   
     socket.join(roomId);
+
     //socket.to(roomId).emit('user-connected', userId);
-    socket.on('ready2',()=>{
-      
-      console.log('ready as hell')
-      console.log('ready as hell')
-      console.log('ready as hell')
-      console.log('ready as hell')
-      console.log('ready as hell')
-      console.log('ready as hell')
-      console.log('ready as hell')
-      console.log('ready as hell')
 
-      //socket.broadcast.to(roomId).emit('user-connected',userId );
-
-      io.of("/letgo").in(roomId).emit('user-connected',userId)
-
-
-    })
+ 
 
     socket.on('disconnect', () => {
       socket.to(roomId).emit('user-disconnected', userId);
@@ -83,17 +70,14 @@ io.of("/letgo").on('connection', (socket) => {
 
   });
 
-  socket.on('ready',()=>{
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-
+  socket.on('ready',(roomId, userId)=>{
+    console.log('ready as hell')
+    console.log('ready as hell')
+    console.log('ready as hell')
+    console.log('ready as hell')
+    socket.broadcast.to(roomId).emit('user-connected',userId );
   })
+
 });
 
 
