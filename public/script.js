@@ -2,15 +2,15 @@
 const domain= ''//'https://webrtc-ymot.onrender.com'
 
 //console.log(location.hostname)
-const socket=io('https://webrtc-ymot.onrender.com/')
+const socket=io('https://webrtc-ymot.onrender.com/letgo')
 const mypeer=new Peer(undefined,{host:'peer-server-45y9.onrender.com', path:'/peerjs'})
 
-
+    
 //console.log(location.hostname)
 //port: location.port || (location.protocol === 'https:' ? 443 : 80
 //host:location.hostname
 const Ids={}
-const peers={}
+const peers={} 
 let localStream;
 let userId=''
 
@@ -191,7 +191,7 @@ function startVideoStream(state1, state2) {
   
     console.log("call ready listner")
   
-    socket.emit("ready", 'empty')
+    socket.emit("ready",{test:'eeeee'})
   
     socket.on('user-connected', (userId) => {
       console.log(" user connected ")

@@ -44,13 +44,15 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
   res.redirect(`/${Math.random().toString(36).substring(2, 15)}`);
 });
+ 
+
 
 
 app.get('/:myroom', (req, res) => {
     res.render('room', {roomId:req.params.myroom});
 });
 
-io.on('connection', (socket) => {
+io.of("/letgo").on('connection', (socket) => {
   socket.on('join-room', (roomId, userId) => {
 
     console.log('connection made to room : ',roomId,userId)
@@ -65,7 +67,11 @@ io.on('connection', (socket) => {
       console.log('ready as hell')
       console.log('ready as hell')
       console.log('ready as hell')
-      socket.broadcast.to(roomId).emit('user-connected',userId );
+
+      //socket.broadcast.to(roomId).emit('user-connected',userId );
+
+      io.of("/letgo").in(roomId)
+                    .emit('user-connected',userId)
     })
 
     socket.on('disconnect', () => {
