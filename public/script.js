@@ -2,10 +2,13 @@
 const domain= ''//'https://webrtc-ymot.onrender.com'
 
 console.log(location.hostname)
-const socket=io('/')
+const socket=io('https://webrtc-ymot.onrender.com/')
 const mypeer=new Peer(undefined,{host:'peer-server-45y9.onrender.com', path:'/peerjs'})
 
+
+console.log(location.hostname)
 //port: location.port || (location.protocol === 'https:' ? 443 : 80
+//host:location.hostname
 const Ids={}
 const peers={}
 let localStream;
