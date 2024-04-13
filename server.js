@@ -80,5 +80,5 @@ io.on('connection', (socket) => {
 
 
 mainServer.listen(PORT, () => {
-  console.log(`Peer server is running on port ${PORT}`);
+  console.log(`server is running on port ${PORT}`);
 })
