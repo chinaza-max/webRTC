@@ -7,11 +7,10 @@ import { Server } from "socket.io";
 import cors from 'cors';
 
 
-
 app.use(cors());
 const mainServer = http.createServer(app);
 
-const io = new Server(mainServer, {
+const io = new Server(mainServer, {  
   cors: {
     origin: '*',
     methods: ['GET', 'POST']
