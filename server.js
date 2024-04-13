@@ -1,10 +1,9 @@
 // server.js
 import express from 'express';
 import http from 'http';
-const app = express();
 import { Server } from "socket.io";
-//import { ExpressPeerServer } from 'peer';
 import cors from 'cors';
+const app = express();
 
 
 app.use(cors());
@@ -56,17 +55,14 @@ io.on('connection', (socket) => {
 
     console.log('connection made to room : ',roomId)
     console.log('connection made to room : ',roomId)
-    console.log('connection made to room : ',roomId)
-    console.log('connection made to room : ',roomId)
-    console.log('connection made to room : ',roomId)
-    console.log('connection made to room : ',roomId)
-    console.log('connection made to room : ',roomId)
-
+   
     socket.join(roomId);
 
     //socket.to(roomId).emit('user-connected', userId);
 
     socket.join(roomId);
+
+    
     socket.on('ready',()=>{
       socket.broadcast.to(roomId).emit('user-connected',userId );
     })

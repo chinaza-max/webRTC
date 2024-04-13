@@ -137,6 +137,10 @@ function startVideoStream(state1, state2) {
     Ids[userId]=true
 
 
+    console.log("my peer ")
+    console.log(mypeer)
+    console.log("my peer")
+
 
     mypeer.on('call', call => {
       call.answer(stream);
@@ -185,12 +189,14 @@ function startVideoStream(state1, state2) {
       });
     });
   
+    console.log("call ready listner")
   
     socket.emit("ready")
   
   
     socket.on('user-connected', (userId) => {
-  
+      console.log(" user connected ")
+
         // setTimeout(() => {
           myclassInstance.connectToNewUser(userId,stream)
   
@@ -226,7 +232,6 @@ $("#endCall i").click(function() {
   $("#text").text('link copied!')
   var fullPath = window.location.href;
 
-console.log(fullPath);
 
   navigator.clipboard.writeText(fullPath).then(function() {
     showCopyMessage();
