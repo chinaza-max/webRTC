@@ -71,12 +71,20 @@ io.on('connection', (socket) => {
   });
 
   socket.on('ready',(roomId, userId)=>{
-    console.log('ready as hell')
-    console.log('ready as hell')
-    console.log('ready as hell')
-    console.log('ready as hell')
+    
+
+    console.log('my part is ready')
+    console.log('my part is ready')
+    console.log('my part is ready')
+    console.log('my part is ready')
+    console.log('my part is ready')
+
     console.log(roomId)
-    console.log('ready as hell')
+    console.log(userId)
+
+    console.log('my part is ready')
+    console.log('my part is ready')
+    console.log('my part is ready')
 
     const room = io.sockets.adapter.rooms.get(roomId);
     if (room) {
