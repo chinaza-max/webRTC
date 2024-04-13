@@ -53,8 +53,8 @@ app.get('/:myroom', (req, res) => {
 io.on('connection', (socket) => {
   socket.on('join-room', (roomId, userId) => {
 
-    console.log('connection made to room : ',roomId)
-    console.log('connection made to room : ',roomId)
+    console.log('connection made to room : ',roomId,userId)
+    console.log('connection made to room : ',roomId,userId)
    
     socket.join(roomId);
 
@@ -62,8 +62,12 @@ io.on('connection', (socket) => {
 
     socket.join(roomId);
 
-    
+
     socket.on('ready',()=>{
+      console.log('ready as hell')
+      console.log('ready as hell')
+      console.log('ready as hell')
+      console.log('ready as hell')
       socket.broadcast.to(roomId).emit('user-connected',userId );
     })
 
