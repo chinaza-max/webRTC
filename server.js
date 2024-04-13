@@ -25,7 +25,7 @@ const peerPort = process.env.PORT ||9000;
 
 peerApp.use(cors());
 
-const PORT = 3000;
+const PORT = process.env.PORT ||3000;
 
 const peerServerOptions = {
   debug: true,
