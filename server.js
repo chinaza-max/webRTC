@@ -21,7 +21,7 @@ const io = new Server(mainServer, {
 
 const peerApp = express();
 const peerServer = http.createServer(peerApp);
-const peerPort = 9000;
+const peerPort = process.env.PORT ||9000;
 
 peerApp.use(cors());
 
