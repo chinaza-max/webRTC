@@ -72,6 +72,8 @@ io.of("/letgo").on('connection', (socket) => {
 
       io.of("/letgo").in(roomId)
                     .emit('user-connected',userId)
+
+                    
     })
 
     socket.on('disconnect', () => {
