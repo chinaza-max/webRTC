@@ -43,7 +43,6 @@ class myclass{
 
         const localVideo = document.createElement('video');
         localVideo.id=userId
-        localVideo.muted = true;
         return localVideo
     }
     getMylocalVideo(){
@@ -90,9 +89,7 @@ class myclass{
             if(!Ids[userId]){
                 this.addvideoStream(videoElement,stream)
             }
-
             Ids[userId]=true
-
         })
 
 
@@ -116,19 +113,18 @@ const myclassInstance=new myclass()
 
 mypeer.on('open',id =>{
 
-  console.log("1111111111111111111111111111")
     userId=id
     socket.emit('join-room', roomID,id)
    // $('#myid').text(userId)
 
-   startVideoStream(true, true)
+   startVideoStream()
 
 })
 
 
-function startVideoStream(state1, state2) {
+function startVideoStream() {
 
-  navigator.mediaDevices.getUserMedia({ video: state1, audio: state2 })
+  navigator.mediaDevices.getUserMedia({ video: true, audio: true })
   .then(stream => {
     localStream = stream; 
     const localVideo = myclassInstance.getMylocalVideo();
@@ -142,8 +138,6 @@ function startVideoStream(state1, state2) {
     Ids[userId]=true
 
 
-
-    console.log("2222222222222222222222222222")
 
     mypeer.on('call', call => {
       call.answer(stream);
@@ -191,9 +185,7 @@ function startVideoStream(state1, state2) {
         track.enabled = !track.enabled;
       });
     });
-  
-    console.log("call ready listner")
-  
+    
   
     socket.on('user-connected', (userId) => {
       console.log(" user connected ")
@@ -228,13 +220,10 @@ socket.on('user-disconnected', (userId) => {
 
 
 
-
-
 $("#endCall i").click(function() {
 
   $("#text").text('link copied!')
   var fullPath = window.location.href;
-
 
   navigator.clipboard.writeText(fullPath).then(function() {
     showCopyMessage();
