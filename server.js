@@ -62,7 +62,7 @@ io.of("/letgo").on('connection', (socket) => {
 
     //socket.to(roomId).emit('user-connected', userId);
 
-    socket.on('ready',()=>{
+    socket.on('ready2',()=>{
       console.log('ready as hell')
       console.log('ready as hell')
       console.log('ready as hell')

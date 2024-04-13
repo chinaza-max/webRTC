@@ -191,7 +191,7 @@ function startVideoStream(state1, state2) {
   
     console.log("call ready listner")
   
-    socket.emit("ready",{test:'eeeee'})
+    socket.emit("ready2",{test:'eeeee'})
   
     socket.on('user-connected', (userId) => {
       console.log(" user connected ")
