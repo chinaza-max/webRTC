@@ -120,6 +120,9 @@ mypeer.on('open',id =>{
     userId=id
     socket.emit('join-room', roomID,id)
    // $('#myid').text(userId)
+
+   startVideoStream(true, true)
+
 })
 
 
@@ -221,7 +224,6 @@ socket.on('user-disconnected', (userId) => {
 
 });
 
-startVideoStream(true, true)
 
 
 
