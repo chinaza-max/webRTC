@@ -116,7 +116,7 @@ mypeer.on('open',id =>{
     userId=id
     socket.emit('join-room', roomID,id)
    // $('#myid').text(userId)
-    
+    $("#loaderContainer").hide()
    startVideoStream()
 
 })
