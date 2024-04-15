@@ -86,10 +86,16 @@ class myclass{
         let videoElement=this.getNewVideoElement(userId)
         call.on("stream",stream=>{
 
-          console.log("my stream my stream my stream ")
-
-          console.log(stream)
-          console.log("my stream my stream my stream ")
+          if (stream) {
+            const tracks = stream.getTracks();
+            if (tracks.length > 0) {
+              console.log("Stream contains tracks:", tracks);
+            } else {
+              console.log("Stream does not contain any tracks");
+            }
+          } else {
+            console.log("Stream object is null or undefined");
+          }
 
 
             if(!Ids[userId]){
