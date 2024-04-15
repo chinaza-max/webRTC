@@ -197,7 +197,6 @@ function startVideoStream() {
          
     });
 
-    console.log(userId)
     socket.emit("ready", roomID,userId)
 
   })
@@ -243,3 +242,5 @@ function hideCopyMessage() {
     $("#text").text('')
   }, 4000);
 }
+
+

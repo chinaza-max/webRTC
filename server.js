@@ -55,14 +55,9 @@ app.get('/:myroom', (req, res) => {
 io.on('connection', (socket) => {
   socket.on('join-room', (roomId, userId) => {
 
-    console.log('connection made to room : ',roomId,userId)
-    console.log('connection made to room : ',roomId,userId)
-   
     socket.join(roomId);
 
     //socket.to(roomId).emit('user-connected', userId);
-
- 
 
     socket.on('disconnect', () => {
       socket.to(roomId).emit('user-disconnected', userId);
@@ -72,20 +67,6 @@ io.on('connection', (socket) => {
 
   socket.on('ready',(roomId, userId)=>{
     
-    const room = io.sockets.adapter.rooms.get(roomId);
-    if (room) {
-
-      console.log('size size ')
-      console.log('size size ') 
-      console.log('size 1', room.size)
-        console.log('size size ')
-        console.log('size size ')
-
-
-    } else {
-        return 0; // Room doesn't exist or no clients in the room
-    }
-
     socket.broadcast.to(roomId).emit('user-connected',userId);
   })
 

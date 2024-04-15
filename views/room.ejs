@@ -23,7 +23,7 @@
       grid-template-columns: 100%; /* Initially, one item per row */
       gap: 10px; /* Adjust gap between items as needed */
       justify-content: center;
-        align-content: center;
+      align-content: center;
     }
     video{
         width: 100%;
@@ -60,6 +60,8 @@
         position: fixed;
         bottom: 0;
         width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     
@@ -103,6 +105,8 @@
     <div class="grid-container">
        
     </div>
+
+    <div id="transcript"></div>
     <div class="controls" style="margin-top: 10px;">
 
         <span id="videoContainer">
