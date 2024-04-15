@@ -86,6 +86,12 @@ class myclass{
         let videoElement=this.getNewVideoElement(userId)
         call.on("stream",stream=>{
 
+          console.log("my stream my stream my stream ")
+
+          console.log(stream)
+          console.log("my stream my stream my stream ")
+
+
             if(!Ids[userId]){
                 this.addvideoStream(videoElement,stream)
             }
