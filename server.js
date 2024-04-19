@@ -6,6 +6,15 @@ import cors from 'cors';
 const app = express();
 
 
+/*
+const response = 
+  await fetch("https://peer-server.metered.live/api/v1/turn/credentials?apiKey=cdb20a87d4a6256f343d48307012907e6496");
+
+// Saving the response in the iceServers array
+const iceServers = await response.json();
+console.log(iceServers)
+*/
+
 app.use(cors());
 const mainServer = http.createServer(app);
 

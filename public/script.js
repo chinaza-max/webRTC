@@ -1,9 +1,45 @@
 
 const domain= ''//'https://webrtc-ymot.onrender.com'
 
+
+
+
+
 //console.log(location.hostname)
 const socket=io('https://webrtc-ymot.onrender.com/')
-const mypeer=new Peer(undefined,{host:'peer-server-45y9.onrender.com', path:'/peerjs'})
+const mypeer=new Peer(undefined,
+                {
+                  host:'peer-server-45y9.onrender.com', 
+                  path:'/peerjs',
+                  config: {
+                    iceServers: [
+                      // Example STUN servers (free to use)
+                      { urls: 'stun:stun1.l.google.com:19302' },
+                      { urls: 'stun:stun2.l.google.com:19302' },
+                      { urls: 'stun:stun.relay.metered.ca:80' },
+                      {
+                        urls: 'turn:global.relay.metered.ca:80',
+                        username: 'a7dae179b9af65d689f311e0',
+                        credential: 'fsNVWECfbXUb4oqI'
+                      },
+                      {
+                        urls: 'turn:global.relay.metered.ca:80?transport=tcp',
+                        username: 'a7dae179b9af65d689f311e0',
+                        credential: 'fsNVWECfbXUb4oqI'
+                      },
+                      {
+                        urls: 'turn:global.relay.metered.ca:443',
+                        username: 'a7dae179b9af65d689f311e0',
+                        credential: 'fsNVWECfbXUb4oqI'
+                      },
+                      {
+                        urls: 'turns:global.relay.metered.ca:443?transport=tcp',
+                        username: 'a7dae179b9af65d689f311e0',
+                        credential: 'fsNVWECfbXUb4oqI'
+                      }
+                    ]
+                  }
+              })
 
 
 //console.log(location.hostname)
