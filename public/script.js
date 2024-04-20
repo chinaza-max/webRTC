@@ -3,8 +3,7 @@ const domain= ''//'https://webrtc-ymot.onrender.com'
 
 
 
-
-
+/*
 //console.log(location.hostname)
 const socket=io('https://webrtc-ymot.onrender.com/')
 const mypeer=new Peer(undefined,
@@ -40,6 +39,15 @@ const mypeer=new Peer(undefined,
                     ]
                   }
               })
+*/
+
+const socket=io('http://localhost:3000/')
+const mypeer=new Peer(undefined,
+                {
+                  host:'/', 
+                  path:'/peerjs',
+                  port:9000
+              })
 
 
 //console.log(location.hostname)
@@ -58,10 +66,10 @@ class myclass{
         this.getNewVideoElement=this.getNewVideoElement.bind(this)
     }
     addnewVideoCard(videoElement){
-        const div = document.createElement('div');
-        div.classList.add('grid-item');
-        div.append(videoElement);
-        $(".grid-container").append(div);
+        //const videoDiv = document.createElement('video');
+        videoElement.classList.add("mb-2");
+       // div.append(videoElement);
+        $("#remoteVideo").append(videoElement);
     }
     getAnElement(id){
         return document.getElementById(id)
@@ -82,8 +90,8 @@ class myclass{
         return localVideo
     }
     getMylocalVideo(){
-        const localVideo = document.createElement('video');
-        localVideo.id = 'myVideo';
+        const localVideo =document.getElementById('myVideo') //document.createElement('video');
+        //localVideo.id = 'myVideo';
         localVideo.muted = true;
         return localVideo
     }
@@ -98,13 +106,19 @@ class myclass{
         }
       });
     }
-    addvideoStream(video ,stream){
+    addvideoStream(video ,stream,createStatus){
         video.srcObject=stream
         video.addEventListener('loadedmetadata',()=>{
             video.play()
         })
 
-        this.addnewVideoCard(video)
+        if(createStatus){
+
+        }else
+        {
+          this.addnewVideoCard(video)
+
+        }
     }
     continueVideo(video ,stream){
       video.srcObject=stream
@@ -178,7 +192,7 @@ function startVideoStream() {
     const localVideo = myclassInstance.getMylocalVideo();
   
     if(!Ids[userId]){
-      myclassInstance.addvideoStream(localVideo ,stream)
+      myclassInstance.addvideoStream(localVideo ,stream,'dontCreateNewElement')
     }else{
 
       myclassInstance.continueVideo(document.getElementById('myVideo'),stream)
