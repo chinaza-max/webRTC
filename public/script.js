@@ -3,7 +3,7 @@ const domain= ''//'https://webrtc-ymot.onrender.com'
 
 
 
-/*
+
 //console.log(location.hostname)
 const socket=io('https://webrtc-ymot.onrender.com/')
 const mypeer=new Peer(undefined,
@@ -39,8 +39,9 @@ const mypeer=new Peer(undefined,
                     ]
                   }
               })
-*/
 
+
+/*
 const socket=io('http://localhost:3000/')
 const mypeer=new Peer(undefined,
                 {
@@ -49,7 +50,7 @@ const mypeer=new Peer(undefined,
                   port:9000
               })
 
-
+*/
 //console.log(location.hostname)
 //port: location.port || (location.protocol === 'https:' ? 443 : 80
 //host:location.hostname
