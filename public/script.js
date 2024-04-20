@@ -3,7 +3,7 @@ const domain= ''//'https://webrtc-ymot.onrender.com'
 
 
 
-
+/*
 //console.log(location.hostname)
 const socket=io('https://webrtc-ymot.onrender.com/')
 const mypeer=new Peer(undefined,
@@ -39,8 +39,8 @@ const mypeer=new Peer(undefined,
                     ]
                   }
               })
+*/
 
-/*
 const socket=io('http://localhost:3000/')
 const mypeer=new Peer(undefined,
                 {
@@ -48,7 +48,7 @@ const mypeer=new Peer(undefined,
                   path:'/peerjs',
                   port:9000
               })
-*/
+
 
 //console.log(location.hostname)
 //port: location.port || (location.protocol === 'https:' ? 443 : 80
@@ -178,7 +178,6 @@ mypeer.on('open',id =>{
     userId=id
     socket.emit('join-room', roomID,id)
    // $('#myid').text(userId)
-    $("#loaderContainer").hide()
    startVideoStream()
 
 })
@@ -194,12 +193,11 @@ function startVideoStream() {
     if(!Ids[userId]){
       myclassInstance.addvideoStream(localVideo ,stream,'dontCreateNewElement')
     }else{
-
       myclassInstance.continueVideo(document.getElementById('myVideo'),stream)
     }
     Ids[userId]=true
 
-
+    $("#loaderContainer").hide()
 
     mypeer.on('call', call => {
       call.answer(stream);
